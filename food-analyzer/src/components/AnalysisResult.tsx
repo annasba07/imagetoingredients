@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
+import "@tailwindcss/typography";
 
 interface AnalysisResultProps {
   result: string | null;
@@ -9,23 +9,26 @@ interface AnalysisResultProps {
 export function AnalysisResult({ result, loading }: AnalysisResultProps) {
   if (loading) {
     return (
-      <div className="space-y-4">
-        <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-3/4"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-full"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-5/6"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-4/5"></div>
-        <div className="mt-6 h-6 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-2/3"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-full"></div>
-        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse w-5/6"></div>
+      <div className="flex items-center justify-center h-full">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
   }
 
   if (!result) {
     return (
-      <p className="text-gray-500 dark:text-gray-400">
-        Upload an image and click Analyze to see results
-      </p>
+      <div className="prose prose-sm dark:prose-invert max-w-none">
+        <h3 className="text-lg font-semibold">Welcome to the Image Analyzer</h3>
+        <p>
+          Upload an image and click "Analyze Image" to see what our AI can
+          detect. You can upload images of food to get a list of ingredients, or
+          any other image to see a general analysis.
+        </p>
+        <p>
+          The analysis will appear here once it's complete. Get started by
+          selecting an image!
+        </p>
+      </div>
     );
   }
 
